@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bill Gates of Heaven</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+  <h2>Submit a Prayer to Bill</h2>
+  <form action="backend/submit_prayer.php" method="POST">
+    <label>Name:
+      <input type="text" name="name" required placeholder="Your Devout Name"/>
+    </label><br/>
+
+    <label>Why are you praying?
+      <select name="reason">
+        <option>Need activation key</option>
+        <option>My Excel crashed</option>
+        <option>I'm lost in Bing</option>
+      </select>
+    </label><br/>
+
+    <label>Your Prayer:
+      <textarea name="message" required placeholder="Dear Bill..."></textarea>
+    </label><br/>
+
+    <label>Do you use Windows?
+      <input type="radio" name="uses_windows" value="yes" checked> Yes
+      <input type="radio" name="uses_windows" value="no"> No
+    </label><br/>
+
+    <button type="submit">Send to the Cloud</button>
+  </form>
+</main>
+
+
+  <div id="footer-placeholder"></div>
+
+</body>
+
+</html>

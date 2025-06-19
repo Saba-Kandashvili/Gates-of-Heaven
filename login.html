@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bill Gates of Heaven</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+  <div class="heaven-gates">
+    <div class="gate left-gate"></div>
+    <div class="gate right-gate"></div>
+    <div class="bill-face">
+      <img src="images/bill-gates.png" alt="Bill Gates" />
+    </div>
+    <form action="backend/login.php" method="POST" class="login-form">
+  <h2>Enter the Gates of Heaven</h2>
+  <label>
+    Username:
+    <input type="text" name="username" required />
+  </label>
+  <label>
+    Password:
+    <input type="password" name="password" required />
+  </label>
+  <button type="submit">Log In</button>
+</form>
+  </div>
+</main>
+
+
+  <div id="footer-placeholder"></div>
+
+</body>
+
+</html>
