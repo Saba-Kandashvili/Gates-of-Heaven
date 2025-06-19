@@ -13,30 +13,30 @@
   <div id="header-placeholder"></div>
 
   <main>
-  <h2>Submit a Prayer to Bill</h2>
-  <form action="backend/submit_prayer.php" method="POST">
-    <label>Name:
-      <input type="text" name="name" required placeholder="Your Devout Name"/>
-    </label><br/>
+  <h2>Submit Your Prayer to the Divine One</h2>
 
-    <label>Why are you praying?
-      <select name="reason">
-        <option>Need activation key</option>
-        <option>My Excel crashed</option>
-        <option>I'm lost in Bing</option>
+  <form action="backend/pray.php" method="POST" enctype="multipart/form-data">
+    <label>
+      Why are you praying today?
+      <select name="reason" required>
+        <option value="Thanks">Giving Thanks</option>
+        <option value="Request">Request for Support</option>
+        <option value="BugFix">A Bug to be Resolved</option>
+        <option value="Forgiveness">Seeking Forgiveness</option>
       </select>
-    </label><br/>
+    </label>
 
-    <label>Your Prayer:
-      <textarea name="message" required placeholder="Dear Bill..."></textarea>
-    </label><br/>
+    <label>
+      Your Message:
+      <textarea name="message" required></textarea>
+    </label>
 
-    <label>Do you use Windows?
-      <input type="radio" name="uses_windows" value="yes" checked> Yes
-      <input type="radio" name="uses_windows" value="no"> No
-    </label><br/>
+    <label>
+    Optional Microsoft Offering:
+    <input type="file" name="offering" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt">
+  </label>
 
-    <button type="submit">Send to the Cloud</button>
+    <button type="submit">Send to the Cloud™</button>
   </form>
 </main>
 

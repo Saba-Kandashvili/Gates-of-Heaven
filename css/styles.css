@@ -245,3 +245,121 @@ form button {
 form button:hover {
   background-color: #218838;
 }
+
+/* -------------------------------- */
+/* Prayer Page - Form Styling       */
+/* -------------------------------- */
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+form button {
+  background-color: #0066cc;
+}
+
+form button:hover {
+  background-color: #004a99;
+}
+
+/* -------------------------------- */
+/* Profile Page - Prayers List      */
+/* -------------------------------- */
+#prayers-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#prayers-list li {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.delete-form {
+  display: inline;
+}
+
+.delete-form button {
+  margin-top: 0.5rem;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-form button:hover {
+  background-color: #990000;
+}
+
+/* -------------------------------- */
+/* Offerings Display Block          */
+/* -------------------------------- */
+.offering-tools {
+  margin-top: 0.5rem;
+}
+
+.offering-tools a {
+  color: #0044cc;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-right: 1rem;
+}
+
+.offering-tools .delete-form {
+  display: inline;
+}
+
+.offering-tools button {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.offering-tools button:hover {
+  background-color: #990000;
+}
+
+/* -------------------------------- */
+/* Offering Replace Form            */
+/* -------------------------------- */
+.replace-form {
+  margin-top: 0.5rem;
+}
+
+.replace-form input[type="file"] {
+  margin-left: 0.5rem;
+}
+
+.replace-form button {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.3rem;
+}
+
+.replace-form button:hover {
+  background-color: #004a99;
+}

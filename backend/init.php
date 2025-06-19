@@ -1,22 +1,22 @@
 <?php
 require 'db.php';
 
-$db->exec("
-CREATE TABLE IF NOT EXISTS users (
+// Create users table
+$db->exec("CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT UNIQUE NOT NULL,
-  password TEXT NOT NULL
-);
+  username TEXT UNIQUE,
+  password TEXT
+)");
 
-CREATE TABLE IF NOT EXISTS prayers (
+// Create prayers table
+$db->exec("CREATE TABLE IF NOT EXISTS prayers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  user_id INTEGER NOT NULL,
+  user_id INTEGER,
   reason TEXT,
   message TEXT,
-  created TEXT DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY(user_id) REFERENCES users(id)
-);
-");
+  file_name TEXT,
+  created DATETIME DEFAULT CURRENT_TIMESTAMP
+)");
 
 echo "Database initialized.";
 ?>

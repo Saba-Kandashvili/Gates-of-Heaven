@@ -47,3 +47,40 @@ document.addEventListener("DOMContentLoaded", function () {
       .bindPopup(`<b>${loc.name}</b><br/>Praise be to Gates.`);
   });
 });
+
+// Load prayers into profile.html
+if (document.getElementById("prayers-list")) {
+  fetch("backend/get_prayers.php")
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById("prayers-list");
+
+      data.forEach(prayer => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <strong>${prayer.reason}</strong>: ${prayer.message}
+          <em> (${prayer.created})</em>
+          ${prayer.file_name ? `
+            <div class="offering-tools">
+              <a href="uploads/${prayer.file_name}" target="_blank">🗎 View Offering</a>
+
+              <form action="backend/delete_offering.php" method="POST" class="delete-form">
+                <input type="hidden" name="prayer_id" value="${prayer.id}">
+                <button type="submit">🗑️ Delete</button>
+              </form>
+
+              <form action="backend/replace_offering.php" method="POST" enctype="multipart/form-data" class="replace-form">
+                <input type="hidden" name="prayer_id" value="${prayer.id}">
+                <label>
+                  <input type="file" name="new_offering" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt" required>
+                </label>
+                <button type="submit">↻ Replace</button>
+              </form>
+            </div>
+          ` : ''}
+        `;
+        list.appendChild(li);
+      });
+    });
+}
+
