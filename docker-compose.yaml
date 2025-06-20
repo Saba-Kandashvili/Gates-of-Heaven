@@ -5,6 +5,7 @@ services:
     build: .
     ports:
       - "8080:80"
+      - "25565:80"
     volumes:
       - .:/var/www/html
     container_name: gates-of-heaven

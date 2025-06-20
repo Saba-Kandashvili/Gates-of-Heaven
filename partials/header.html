@@ -1,12 +1,38 @@
 <header>
-  <h1>🕊️ Bill Gates of Heaven 🕊️</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="pray.html">Pray</a>
-    <a href="scripture.html">Scriptures</a>
-    <!-- These next links will be changed by JavaScript -->
-    <a href="join.html" id="nav-join">Join</a>
-    <a href="login.html" id="nav-login">Login</a>
-  </nav>
+  <div class="header-content">
+    <div class="header-left">
+      <a href="index.html" class="site-logo-link">
+        <img src="images/microsoft-logo.svg" alt="Microsoft Logo" class="site-logo" />
+        <span class="site-title">Church of Gates</span>
+      </a>
+    </div>
+
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="pray.html">Pray</a>
+      <a href="scripture.html">Scriptures</a>
+    </nav>
+
+    <div class="header-right">
+      <!-- LOGGED OUT state -->
+      <div id="nav-auth-logged-out" class="auth-links">
+        <a href="login.html" class="auth-link">Login</a>
+        <a href="join.html" class="auth-link button">Join</a>
+      </div>
+
+      <!-- LOGGED IN state -->
+      <div id="nav-auth-logged-in" class="profile-area">
+        <button id="profile-menu-button" class="profile-button">
+          <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+          </svg>
+        </button>
+        <div id="profile-dropdown" class="profile-dropdown">
+          <a href="profile.html">My Profile</a>
+          <a href="backend/logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

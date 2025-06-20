@@ -8,32 +8,40 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/main.js" defer></script>
 </head>
-<body>
+<body class="join-page-body">
 
   <div id="header-placeholder"></div>
 
-  <main>
-  <h2>Join the Church of Gates</h2>
-  <form action="backend/register.php" method="POST">
-    <label>
-      Username:
-      <input type="text" name="username" required>
-    </label>
-    <label>
-      Password:
-      <input type="password" name="password" required>
-    </label>
-    <label>
-      Confirm Password:
-      <input type="password" name="confirm" required>
-    </label>
-    <button type="submit">Become a Believer</button>
-  </form>
-</main>
+  <div class="join-page-container">
+    <div class="join-window">
+      <h2>Let's complete your setup</h2>
+      <p>By joining, you'll get the best experience, guaranteed by our recommended settings.</p>
 
+      <form action="backend/register.php" method="POST">
+        <label>
+          Username:
+          <input type="text" name="username" required>
+        </label>
+        <label>
+          Password:
+          <input type="password" name="password" required>
+        </label>
+        <label>
+          Confirm Password:
+          <input type="password" name="confirm" required>
+        </label>
+
+        <div class="recommended-settings">
+          <input type="checkbox" id="recommended" checked disabled>
+          <label for="recommended">Accept recommended browser settings (makes Bing your default search engine and Edge your default browser).</label>
+        </div>
+
+        <button type="submit">Accept & Join</button>
+      </form>
+    </div>
+  </div>
 
   <div id="footer-placeholder"></div>
 
 </body>
-
 </html>

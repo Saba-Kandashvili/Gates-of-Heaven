@@ -8,19 +8,189 @@ body {
   visibility: hidden; /* Add this line to hide the body initially */
 }
 
+/* -------------------------------- */
+/* Header Redesign v3 (Final)       */
+/* -------------------------------- */
 header {
-  background-color: rgba(0, 102, 204, 0.8);
-  padding: 1rem;
+  background-color: #0078d4;
+  background-image:
+    linear-gradient(45deg, rgba(0, 90, 158, .2) 25%, transparent 25%, transparent 75%, rgba(0, 90, 158, .2) 75%),
+    linear-gradient(45deg, rgba(0, 90, 158, .2) 25%, transparent 25%, transparent 75%, rgba(0, 90, 158, .2) 75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
   color: white;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  /* Adjust padding to accommodate the logo sticking out */
+  padding: 0 2rem 0 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 100;
 }
 
-nav a {
-  margin: 0 10px;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* Make header taller for the big logo */
+  height: 100px;
+}
+
+.header-left .site-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   color: white;
   text-decoration: none;
+  /* Pull the entire left block to the very edge */
+  margin-left: -2rem;
+  padding-left: 1rem;
+  height: 100%;
+}
+
+.site-logo {
+  height: 128px; /* As requested */
+  width: 128px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.site-logo-link:hover .site-logo {
+  transform: rotate(180deg) scale(1.1);
+}
+
+.site-title {
+  font-size: 1.6em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding: 8px 4px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.header-nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.header-nav a:hover {
+  color: #cceeff;
+}
+
+.header-nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.header-right .auth-links {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.auth-links .auth-link {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+.auth-links .auth-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.auth-links .auth-link.button {
+  background-color: white;
+  color: #005a9e;
   font-weight: bold;
+}
+.auth-links .auth-link.button:hover {
+  background-color: #e6e6e6;
+}
+
+/* --- Profile Dropdown --- */
+.profile-area {
+  position: relative;
+}
+
+.profile-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+.profile-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.profile-icon {
+  width: 36px;
+  height: 36px;
+  fill: white;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 120%; /* Position below the button */
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.profile-dropdown.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.profile-dropdown a {
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+}
+
+.profile-dropdown a:hover {
+  background-color: #f2f2f2;
+}
+
+.profile-dropdown a:first-child {
+  border-bottom: 1px solid #e6e6e6;
 }
 
 main {
@@ -443,4 +613,116 @@ form button:hover {
   .heaven-gates {
     height: 600px; /* Reduce height of the gate animation container */
   }
+}
+
+/* -------------------------------- */
+/* Join Page - Windows 11 Parody    */
+/* -------------------------------- */
+.join-page-body {
+  /* Override the default body background just for this page */
+  background: #0078d4;
+  visibility: visible; /* Ensure it's not hidden by the default body rule */
+}
+
+.join-page-container {
+  min-height: calc(100vh - 102px); /* Full height minus the header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-image: url('../images/win11-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.join-window {
+  background: rgba(242, 242, 242, 0.8); /* A light grey, slightly transparent */
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px) saturate(150%); /* For Safari */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 2.5rem;
+  max-width: 550px;
+  width: 100%;
+  color: #333;
+}
+
+.join-window h2 {
+  font-size: 2em;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.join-window p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.join-window form {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+.join-window form label {
+  color: #333;
+  font-weight: 500;
+}
+
+.join-window form input[type="text"],
+.join-window form input[type="password"] {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.join-window form input:focus {
+  border-color: #0078d4;
+  box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.3);
+  outline: none;
+}
+
+.recommended-settings {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.recommended-settings input[type="checkbox"] {
+  width: auto;
+  margin-top: 4px;
+  accent-color: #0078d4; /* Style the checkmark color */
+}
+
+.recommended-settings label {
+  font-size: 0.9em;
+  color: #444;
+  margin: 0;
+  font-weight: normal;
+}
+
+.join-window form button {
+  width: 100%;
+  background-color: #0078d4;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 0.8rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.join-window form button:hover {
+  background-color: #005a9e;
+}
+
+.join-window form button:active {
+  transform: scale(0.98);
 }

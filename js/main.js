@@ -3,7 +3,24 @@ $(function () {
   $("#header-placeholder").load("partials/header.html", function() {
     // This code runs *after* the header has been loaded
     checkUserSession();
+
+    // NEW: Dropdown Menu Logic
+    const profileButton = $('#profile-menu-button');
+    const dropdown = $('#profile-dropdown');
+
+    profileButton.on('click', function(event) {
+      event.stopPropagation(); // Prevents the click from closing the menu immediately
+      dropdown.toggleClass('active');
+    });
+
+    // Close dropdown if clicking outside of it
+    $(document).on('click', function() {
+      if (dropdown.hasClass('active')) {
+        dropdown.removeClass('active');
+      }
+    });
   });
+
   $("#footer-placeholder").load("partials/footer.html");
 
   // --- Page Specific Logic ---
@@ -52,11 +69,16 @@ $(function () {
 });
 
 function checkUserSession() {
-  // This function just updates the nav bar
+  // This function now shows/hides the correct auth blocks in the header
   $.get("backend/check_session.php", function(session) {
     if (session.loggedIn) {
-      $('#nav-join').text('Profile').attr('href', 'profile.html');
-      $('#nav-login').html('Logout').attr('href', 'backend/logout.php');
+      // User is logged in: show profile area, hide login/join
+      $('#nav-auth-logged-out').hide();
+      $('#nav-auth-logged-in').show();
+    } else {
+      // User is logged out: show login/join, hide profile area
+      $('#nav-auth-logged-out').show();
+      $('#nav-auth-logged-in').hide();
     }
   });
 }
