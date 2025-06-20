@@ -205,7 +205,7 @@ main {
 
 footer {
   background-color: #003366;
-  color: white;
+  color: wheat;
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
@@ -439,85 +439,6 @@ form button:hover {
   width: 90%;
 }
 
-/* -------------------------------- */
-/* Join Page - Registration Form    */
-/* -------------------------------- */
-form {
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 400px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-form label {
-  display: block;
-  margin-bottom: 1rem;
-}
-form input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.3rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-form button {
-  width: 100%;
-  background-color: #28a745;
-  color: white;
-  padding: 0.6rem;
-  border: none;
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
-}
-form button:hover {
-  background-color: #218838;
-}
-
-/* -------------------------------- */
-/* Prayer Page - Form Styling       */
-/* -------------------------------- */
-form select,
-form textarea {
-  width: 100%;
-  padding: 0.6rem;
-  margin-top: 0.3rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-}
-
-form textarea {
-  height: 150px;
-  resize: vertical;
-}
-
-form button {
-  background-color: #0066cc;
-}
-
-form button:hover {
-  background-color: #004a99;
-}
-
-/* -------------------------------- */
-/* Profile Page - Prayers List      */
-/* -------------------------------- */
-#prayers-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-#prayers-list li {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
 
 .delete-form {
   display: inline;
@@ -622,11 +543,9 @@ form button:hover {
 }
 
 /* -------------------------------- */
-/* Join Page - Windows 11 Parody    */
+/* Reusable "Mica" Window Style     */
 /* -------------------------------- */
-
-
-.join-page-container {
+.win11-bg-container {
   min-height: calc(100vh - 102px); /* Full height minus the header */
   display: flex;
   align-items: center;
@@ -637,7 +556,7 @@ form button:hover {
   background-position: center;
 }
 
-.join-window {
+.mica-window {
   background: rgba(242, 242, 242, 0.8); /* A light grey, slightly transparent */
   backdrop-filter: blur(25px) saturate(150%);
   -webkit-backdrop-filter: blur(25px) saturate(150%); /* For Safari */
@@ -650,20 +569,20 @@ form button:hover {
   color: #333;
 }
 
-.join-window h2 {
+.mica-window h2 {
   font-size: 2em;
   font-weight: 600;
   text-align: center;
   margin-bottom: 0.5rem;
 }
 
-.join-window p {
+.mica-window p {
   text-align: center;
   margin-bottom: 2rem;
   color: #555;
 }
 
-.join-window form {
+.mica-window form {
   background: none;
   box-shadow: none;
   padding: 0;
@@ -671,25 +590,30 @@ form button:hover {
   max-width: 100%;
 }
 
-.join-window form label {
+.mica-window form label {
   color: #333;
   font-weight: 500;
 }
 
-.join-window form input[type="text"],
-.join-window form input[type="password"] {
+.mica-window form input[type="text"],
+.mica-window form input[type="password"],
+.mica-window form input[type="file"],
+.mica-window form select,
+.mica-window form textarea {
   background-color: rgba(255, 255, 255, 0.7);
   border: 1px solid #ccc;
   color: #333;
 }
 
-.join-window form input:focus {
+.mica-window form input:focus,
+.mica-window form select:focus,
+.mica-window form textarea:focus {
   border-color: #0078d4;
   box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.3);
   outline: none;
 }
 
-.recommended-settings {
+.mica-window .recommended-settings {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
@@ -699,20 +623,20 @@ form button:hover {
   margin: 1.5rem 0;
 }
 
-.recommended-settings input[type="checkbox"] {
+.mica-window .recommended-settings input[type="checkbox"] {
   width: auto;
   margin-top: 4px;
   accent-color: #0078d4; /* Style the checkmark color */
 }
 
-.recommended-settings label {
+.mica-window .recommended-settings label {
   font-size: 0.9em;
   color: #444;
   margin: 0;
   font-weight: normal;
 }
 
-.join-window form button {
+.mica-window form button {
   width: 100%;
   background-color: #0078d4;
   font-size: 1.1em;
@@ -721,10 +645,120 @@ form button:hover {
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.join-window form button:hover {
+.mica-window form button:hover {
   background-color: #005a9e;
 }
 
-.join-window form button:active {
+.mica-window form button:active {
   transform: scale(0.98);
+}
+
+/* ------------------------------------ */
+/* Profile Page - Modern Prayer List    */
+/* ------------------------------------ */
+
+#prayers-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Creates space between prayer windows */
+}
+
+/* Each prayer item now uses the .mica-window style we already created! */
+.prayer-item {
+  padding: 1.5rem; /* A little less padding than the main forms */
+}
+
+.prayer-item h3 {
+  margin-top: 0;
+  color: #005a9e; /* A nice blue for the prayer reason */
+}
+
+.prayer-item .prayer-message {
+  white-space: pre-wrap; /* Preserves line breaks in the message */
+  margin: 1rem 0;
+}
+
+.prayer-item .prayer-meta {
+  font-size: 0.85em;
+  color: #666;
+  text-align: right;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* The "Neat Banner" for offerings */
+.offering-bar {
+  margin-top: 1.5rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.no-offering {
+    color: #777;
+    font-style: italic;
+}
+
+.offering-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.9em;
+  /* The following two lines prevent long filenames from breaking the layout */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offering-info .file-icon {
+  font-size: 1.5em; /* Make the emoji icon bigger */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.offering-info .file-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.offering-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0; /* Prevent this container from shrinking */
+}
+
+/* General styling for our new small action buttons */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.08);
+  color: #333;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-action:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.btn-action:active {
+  transform: scale(0.9);
+}
+
+/* Hide the ugly default file input */
+.replace-form input[type="file"] {
+    display: none;
 }

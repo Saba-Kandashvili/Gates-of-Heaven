@@ -12,35 +12,38 @@
 
   <div id="header-placeholder"></div>
 
-   <div class="page-container">
-  <main>
-  <h2>Submit Your Prayer to the Divine One</h2>
+   <div class="win11-bg-container">
+    <div class="mica-window">
+      <main>
+        <h2>Submit Your Prayer</h2>
+        <p>Offer your request to the cloud. Your message will be processed asynchronously.</p>
 
-  <form action="backend/pray.php" method="POST" enctype="multipart/form-data">
-    <label>
-      Why are you praying today?
-      <select name="reason" required>
-        <option value="Thanks">Giving Thanks</option>
-        <option value="Request">Request for Support</option>
-        <option value="BugFix">A Bug to be Resolved</option>
-        <option value="Forgiveness">Seeking Forgiveness</option>
-      </select>
-    </label>
+        <form action="backend/pray.php" method="POST" enctype="multipart/form-data">
+          <label>
+            Why are you praying today?
+            <select name="reason" required>
+              <option value="Thanks">Giving Thanks</option>
+              <option value="Request">Request for Support</option>
+              <option value="BugFix">A Bug to be Resolved</option>
+              <option value="Forgiveness">Seeking Forgiveness</option>
+            </select>
+          </label>
 
-    <label>
-      Your Message:
-      <textarea name="message" required></textarea>
-    </label>
+          <label>
+            Your Message:
+            <textarea name="message" required></textarea>
+          </label>
 
-    <label>
-    Optional Microsoft Offering:
-    <input type="file" name="offering" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt">
-  </label>
+          <label>
+            Optional Microsoft Offering:
+            <input type="file" name="offering" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt">
+          </label>
 
-    <button type="submit">Send to the Cloud™</button>
-  </form>
-</main>
-</div>
+          <button type="submit">Send to the Cloud™</button>
+        </form>
+      </main>
+    </div>
+  </div>
 
   <div id="footer-placeholder"></div>
 

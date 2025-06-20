@@ -127,43 +127,62 @@ function loadPrayers() {
       list.innerHTML = ''; // Clear existing list
 
       if (data.length === 0) {
-        list.innerHTML = '<li>You have not yet submitted any prayers.</li>';
+        // Create a mica window for the "no prayers" message for consistency
+        list.innerHTML = `
+          <li class="mica-window prayer-item">
+            <p>You have not yet submitted any prayers. Go to the <a href="pray.html">Pray</a> page to send your first message to the Cloud™.</p>
+          </li>`;
         return;
       }
 
       data.forEach(prayer => {
         const li = document.createElement("li");
-        // Using innerText for user-generated content is safer against XSS
-        const messageNode = document.createElement('p');
-        messageNode.innerText = prayer.message;
+        // Each list item is now a self-contained "Mica" window
+        li.className = 'mica-window prayer-item';
+
+        // Sanitize the user-provided message to prevent XSS
+        const messageDiv = document.createElement('div');
+        messageDiv.innerText = prayer.message;
+        const sanitizedMessage = messageDiv.innerHTML;
+
+        // Conditional HTML for the offering bar
+        const offeringHTML = prayer.file_name ? `
+          <div class="offering-bar">
+            <div class="offering-info">
+              <span class="file-icon">📄</span>
+              <span class="file-name" title="${prayer.file_name}">${prayer.file_name}</span>
+            </div>
+            <div class="offering-actions">
+              <!-- Replace Form: The label acts as the button -->
+              <form action="backend/replace_offering.php" method="POST" enctype="multipart/form-data" class="replace-form" title="Replace Offering">
+                <input type="hidden" name="prayer_id" value="${prayer.id}">
+                <label class="btn-action">
+                  🔄
+                  <input type="file" name="new_offering" onchange="this.form.submit()" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt" required>
+                </label>
+              </form>
+              <!-- Delete Form -->
+              <form action="backend/delete_offering.php" method="POST" class="delete-form" onsubmit="return confirm('Are you sure you want to delete this offering?');" title="Delete Offering">
+                <input type="hidden" name="prayer_id" value="${prayer.id}">
+                <button type="submit" class="btn-action">🗑️</button>
+              </form>
+            </div>
+          </div>
+        ` : `
+          <div class="offering-bar no-offering">
+            <em>No offering was made with this prayer.</em>
+          </div>
+        `;
 
         li.innerHTML = `
-          <strong>${prayer.reason}</strong>
-          <p>${messageNode.innerHTML}</p>
-          <em>(${new Date(prayer.created).toLocaleString()})</em>
-          ${prayer.file_name ? `
-            <div class="offering-tools">
-              <a href="uploads/${prayer.file_name}" target="_blank">📄 View Offering</a>
-
-              <form action="backend/delete_offering.php" method="POST" class="delete-form" onsubmit="return confirm('Are you sure you want to delete this offering?');">
-                <input type="hidden" name="prayer_id" value="${prayer.id}">
-                <button type="submit">🗑️ Delete</button>
-              </form>
-
-              <form action="backend/replace_offering.php" method="POST" enctype="multipart/form-data" class="replace-form">
-                <input type="hidden" name="prayer_id" value="${prayer.id}">
-                <label>
-                  <input type="file" name="new_offering" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt" required>
-                </label>
-                <button type="submit">🔃 Replace</button>
-              </form>
-            </div>
-          ` : `
-            <div class="offering-tools">
-                <em>No offering was made with this prayer.</em>
-            </div>
-          `}
+          <h3>${prayer.reason}</h3>
+          <div class="prayer-message">${sanitizedMessage}</div>
+          ${offeringHTML}
+          <div class="prayer-meta">
+            Prayed on: ${new Date(prayer.created).toLocaleString()}
+          </div>
         `;
+
         list.appendChild(li);
       });
     });
