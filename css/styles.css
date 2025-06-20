@@ -8,6 +8,12 @@ body {
   visibility: hidden; /* Add this line to hide the body initially */
 }
 
+.standard-page {
+  /* Override the default body background just for this page */
+  background: #0078d4;
+  visibility: visible; /* Ensure it's not hidden by the default body rule */
+}
+
 /* -------------------------------- */
 /* Header Redesign v3 (Final)       */
 /* -------------------------------- */
@@ -618,11 +624,7 @@ form button:hover {
 /* -------------------------------- */
 /* Join Page - Windows 11 Parody    */
 /* -------------------------------- */
-.join-page-body {
-  /* Override the default body background just for this page */
-  background: #0078d4;
-  visibility: visible; /* Ensure it's not hidden by the default body rule */
-}
+
 
 .join-page-container {
   min-height: calc(100vh - 102px); /* Full height minus the header */
