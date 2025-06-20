@@ -1,14 +1,14 @@
 <?php
 require 'db.php';
 
-// Create users table
+// users table
 $db->exec("CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   username TEXT UNIQUE,
   password TEXT
 )");
 
-// Create prayers table
+// prayers table
 $db->exec("CREATE TABLE IF NOT EXISTS prayers (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER,

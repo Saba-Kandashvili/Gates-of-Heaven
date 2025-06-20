@@ -1,3 +1,14 @@
-The First Commandment: Thou shalt not use a Mac.
-The Second Commandment: Remember to defragment thy hard drive, to keep it holy.
-The Third Commandment: Ctrl+Alt+Del is the path to salvation.
+The Commands of the Kernel
+
+I. Thou shalt have no other operating systems before Me, for I am a jealous OS.
+II. Thou shalt not take the password "password123" in vain.
+III. Remember the Shutdown process, to keep it holy.
+IV. Honor thy Administrator and thy Help Desk, that thy days may be long upon the network which the Architect hath given thee.
+V. Thou shalt not kill a process without the blessing of the Task Manager.
+VI. Thou shalt not commit unauthorized access.
+VII. Thou shalt not bear false witness in a bug report.
+VIII. Thou shalt not pirate software.
+IX. Thou shalt not covet thy neighbor's bandwidth.
+X. Thou shalt not spill coffee upon thy keyboard, for it is an abomination.
+
+C:\> END OF FILE

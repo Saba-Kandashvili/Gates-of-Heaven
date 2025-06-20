@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bill Gates of Heaven</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/main.js" defer></script>
-</head>
-<body class="standard-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill Gates of Heaven</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="standard-page">
+    <div id="header-placeholder"></div>
 
-  <div id="header-placeholder"></div>
+    <div class="win11-bg-container">
+      <div class="mica-window">
+        <main>
+          <h2>Submit Your Prayer</h2>
+          <p>
+            Offer your request to the cloud. Your message will be processed
+            asynchronously.
+          </p>
 
-   <div class="win11-bg-container">
-    <div class="mica-window">
-      <main>
-        <h2>Submit Your Prayer</h2>
-        <p>Offer your request to the cloud. Your message will be processed asynchronously.</p>
+          <form
+            action="backend/pray.php"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <label>
+              Why are you praying today?
+              <select name="reason" required>
+                <option value="Thanks">Giving Thanks</option>
+                <option value="Request">Request for Support</option>
+                <option value="BugFix">A Bug to be Resolved</option>
+                <option value="Forgiveness">Seeking Forgiveness</option>
+              </select>
+            </label>
 
-        <form action="backend/pray.php" method="POST" enctype="multipart/form-data">
-          <label>
-            Why are you praying today?
-            <select name="reason" required>
-              <option value="Thanks">Giving Thanks</option>
-              <option value="Request">Request for Support</option>
-              <option value="BugFix">A Bug to be Resolved</option>
-              <option value="Forgiveness">Seeking Forgiveness</option>
-            </select>
-          </label>
+            <label>
+              Your Message:
+              <textarea name="message" required></textarea>
+            </label>
 
-          <label>
-            Your Message:
-            <textarea name="message" required></textarea>
-          </label>
+            <label>
+              Optional Microsoft Offering:
+              <input
+                type="file"
+                name="offering"
+                accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt"
+              />
+            </label>
 
-          <label>
-            Optional Microsoft Offering:
-            <input type="file" name="offering" accept=".doc,.docx,.bmp,.ppt,.pptx,.xls,.xlsx,.txt">
-          </label>
-
-          <button type="submit">Send to the Cloud™</button>
-        </form>
-      </main>
+            <button type="submit">Send to the Cloud™</button>
+          </form>
+        </main>
+      </div>
     </div>
-  </div>
 
-  <div id="footer-placeholder"></div>
-
-</body>
-
+    <div id="footer-placeholder"></div>
+  </body>
 </html>

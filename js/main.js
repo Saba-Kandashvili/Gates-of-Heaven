@@ -1,19 +1,17 @@
 $(function () {
-  // Load header and footer placeholders
+  // replace the placehodlers with actual headers
   $("#header-placeholder").load("partials/header.html", function() {
-    // This code runs *after* the header has been loaded
     checkUserSession();
 
-    // NEW: Dropdown Menu Logic
     const profileButton = $('#profile-menu-button');
     const dropdown = $('#profile-dropdown');
 
     profileButton.on('click', function(event) {
-      event.stopPropagation(); // Prevents the click from closing the menu immediately
+      event.stopPropagation();
       dropdown.toggleClass('active');
     });
 
-    // Close dropdown if clicking outside of it
+    // close drowpdown if clicked elsewhere
     $(document).on('click', function() {
       if (dropdown.hasClass('active')) {
         dropdown.removeClass('active');
@@ -23,35 +21,58 @@ $(function () {
 
   $("#footer-placeholder").load("partials/footer.html");
 
-  // --- Page Specific Logic ---
+  displayFormErrors(); 
+
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const status = urlParams.get('status');
+  if (status) {
+      const statusDiv = $('#upload-status');
+      let message = '';
+      let messageClass = '';
+      switch (status) {
+          case 'success':
+              message = 'The Word™ has been updated successfully.';
+              messageClass = 'status-success';
+              break;
+          case 'invalid_type':
+              message = 'Error: Only .txt files are permitted by The Architect.';
+              messageClass = 'status-error';
+              break;
+          case 'upload_error':
+          case 'move_failed':
+          case 'no_file':
+              message = 'Error: The sacred text could not be processed. Please try again.';
+              messageClass = 'status-error';
+              break;
+      }
+      if (message && statusDiv.length) {
+          statusDiv.text(message).addClass(messageClass).show();
+          setTimeout(() => { statusDiv.fadeOut(); }, 5000);
+      }
+  }
+
   const currentPage = window.location.pathname.split("/").pop();
 
-  // For pages that are PUBLIC
   if (currentPage === 'index.html' || currentPage === 'about.html' || currentPage === 'login.html' || currentPage === 'join.html' || currentPage === 'scripture.html' || currentPage === '') {
-    // For public pages, we can show the body immediately.
-    // The checkUserSession will still run to update the nav.
     $('body').css('visibility', 'visible');
   }
 
-  // For pages that require a user to be logged in
+  // require login
   if (currentPage === 'profile.html' || currentPage === 'pray.html') {
     requireLogin();
   }
 
-  // Leaflet Map for About page
   if (document.getElementById('map')) {
     initializeMap();
   }
 
-  // Prayer list for Profile page
   if (document.getElementById("prayers-list")) {
     loadPrayers();
   }
 
-  // Scriptures for scripture.html page
   if (document.getElementById("scripture-content")) {
-    //  ***** THE FIX IS ON THE NEXT LINE *****
-    fetch("backend/get_scripture.php") // Changed "get_scriptures.php" to "get_scripture.php"
+    fetch("backend/get_scripture.php")
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok: ' + response.statusText);
@@ -69,14 +90,14 @@ $(function () {
 });
 
 function checkUserSession() {
-  // This function now shows/hides the correct auth blocks in the header
+  // show/hide login and that kind of stuff
   $.get("backend/check_session.php", function(session) {
     if (session.loggedIn) {
-      // User is logged in: show profile area, hide login/join
+      
       $('#nav-auth-logged-out').hide();
       $('#nav-auth-logged-in').show();
+      $('#upload-scripture-section').show();
     } else {
-      // User is logged out: show login/join, hide profile area
       $('#nav-auth-logged-out').show();
       $('#nav-auth-logged-in').hide();
     }
@@ -84,21 +105,18 @@ function checkUserSession() {
 }
 
 function requireLogin() {
-  // This function enforces the login and redirects if necessary
+  // must be logged in to use some pages like the pray page
   $.get("backend/check_session.php", function(session) {
     if (session.loggedIn) {
-      // If user is logged in, make the page visible
       $('body').css('visibility', 'visible');
     } else {
-      // If not logged in, redirect to the login page.
-      // The body of pray.html will never become visible.
       window.location.href = 'login.html';
     }
   });
 }
 
 function initializeMap() {
-    const map = L.map('map').setView([41.7166, 44.7831], 12); // Tbilisi center
+    const map = L.map('map').setView([41.7166, 44.7831], 12); // tbilisi centre point so the map starts centered on tbilisi
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
@@ -124,10 +142,9 @@ function loadPrayers() {
     .then(data => {
       const list = document.getElementById("prayers-list");
       if (!list) return;
-      list.innerHTML = ''; // Clear existing list
+      list.innerHTML = ''; 
 
       if (data.length === 0) {
-        // Create a mica window for the "no prayers" message for consistency
         list.innerHTML = `
           <li class="mica-window prayer-item">
             <p>You have not yet submitted any prayers. Go to the <a href="pray.html">Pray</a> page to send your first message to the Cloud™.</p>
@@ -137,15 +154,12 @@ function loadPrayers() {
 
       data.forEach(prayer => {
         const li = document.createElement("li");
-        // Each list item is now a self-contained "Mica" window
         li.className = 'mica-window prayer-item';
 
-        // Sanitize the user-provided message to prevent XSS
         const messageDiv = document.createElement('div');
         messageDiv.innerText = prayer.message;
         const sanitizedMessage = messageDiv.innerHTML;
 
-        // Conditional HTML for the offering bar
         const offeringHTML = prayer.file_name ? `
           <div class="offering-bar">
             <div class="offering-info">
@@ -186,4 +200,16 @@ function loadPrayers() {
         list.appendChild(li);
       });
     });
+}
+
+
+function displayFormErrors() {
+  const errorDiv = $('#form-error');
+  if (errorDiv.length) { 
+    $.get("backend/get_error.php", function(errorMessage) {
+      if (errorMessage.trim() !== '') {
+        errorDiv.text(errorMessage).show();
+      }
+    });
+  }
 }

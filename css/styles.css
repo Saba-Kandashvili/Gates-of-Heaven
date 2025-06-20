@@ -1,32 +1,40 @@
-/* Base styling */
+/* root styling */
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif; /* i think this is what microsoft uses*/
   margin: 0;
   padding: 0;
   background: linear-gradient(to bottom, #ffffff, #dcefff);
   color: #333;
-  visibility: hidden; /* Add this line to hide the body initially */
+  visibility: hidden;
 }
 
 .standard-page {
-  /* Override the default body background just for this page */
+  /* basically replaced the default background */
   background: #0078d4;
-  visibility: visible; /* Ensure it's not hidden by the default body rule */
+  visibility: visible;
 }
 
-/* -------------------------------- */
-/* Header Redesign v3 (Final)       */
-/* -------------------------------- */
+/*     header   */
 header {
   background-color: #0078d4;
-  background-image:
-    linear-gradient(45deg, rgba(0, 90, 158, .2) 25%, transparent 25%, transparent 75%, rgba(0, 90, 158, .2) 75%),
-    linear-gradient(45deg, rgba(0, 90, 158, .2) 25%, transparent 25%, transparent 75%, rgba(0, 90, 158, .2) 75%);
+  background-image: linear-gradient(
+      45deg,
+      rgba(0, 90, 158, 0.2) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 90, 158, 0.2) 75%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(0, 90, 158, 0.2) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 90, 158, 0.2) 75%
+    );
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
   color: white;
-  /* Adjust padding to accommodate the logo sticking out */
-  padding: 0 2rem 0 0;
+  padding: 0 25rem 0 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -39,7 +47,6 @@ header {
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  /* Make header taller for the big logo */
   height: 100px;
 }
 
@@ -49,14 +56,13 @@ header {
   gap: 1rem;
   color: white;
   text-decoration: none;
-  /* Pull the entire left block to the very edge */
   margin-left: -2rem;
   padding-left: 1rem;
   height: 100%;
 }
 
 .site-logo {
-  height: 128px; /* As requested */
+  height: 128px;
   width: 128px;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -87,7 +93,7 @@ header {
 }
 
 .header-nav a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -134,7 +140,7 @@ header {
   background-color: #e6e6e6;
 }
 
-/* --- Profile Dropdown --- */
+/* the dropdown thingy */
 .profile-area {
   position: relative;
 }
@@ -162,7 +168,7 @@ header {
 
 .profile-dropdown {
   position: absolute;
-  top: 120%; /* Position below the button */
+  top: 120%;
   right: 0;
   background-color: white;
   border-radius: 8px;
@@ -211,9 +217,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* -------------------------------- */
-/* About Page - Map Section         */
-/* -------------------------------- */
+/* about page map */
 .map-img {
   width: 100%;
   max-width: 600px;
@@ -225,9 +229,6 @@ footer {
   transform: scale(1.05) rotate(1deg);
 }
 
-/* -------------------------------- */
-/* About Page - Map Section         */
-/* -------------------------------- */
 #map {
   height: 500px;
   width: 100%;
@@ -236,24 +237,22 @@ footer {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-
-
-/* -------------------------------- */
-/* Pray Page - Form Styling         */
-/* -------------------------------- */
+/* pray page form*/
 form {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 2rem;
   border-radius: 8px;
   max-width: 600px;
   margin: auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 form label {
   display: block;
   margin-bottom: 1rem;
 }
-form input, form textarea, form select {
+form input,
+form textarea,
+form select {
   width: 100%;
   padding: 0.5rem;
   margin-top: 0.3rem;
@@ -273,13 +272,10 @@ form button:hover {
   background-color: #004a99;
 }
 
-/* -------------------------------- */
-/* Login Page - Heaven Gates        */
-/* -------------------------------- */
+/* login page gates */
 .heaven-gates {
   position: relative;
   height: 800px;
-  /* NEW: The static background is now a simple gradient. The Bliss image is moved to a pseudo-element. */
   background: #5c93c4;
   overflow: hidden;
   display: flex;
@@ -288,35 +284,24 @@ form button:hover {
   flex-direction: column;
 }
 
-/* NEW: This pseudo-element IS the background layer we will animate. */
 .heaven-gates::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../images/bliss.png');
+  background-image: url("../images/bliss.png");
   background-size: cover;
   background-position: center;
-  z-index: 0; /* Position it at the very back */
-  opacity: 0; /* Start completely invisible */
-  transition: opacity 2.5s ease-in-out; /* Set the transition for the fade effect */
+  z-index: 0;
+  opacity: 0; /*start invisible */
+  transition: opacity 2.5s ease-in-out;
 }
 
-/* NEW: On hover, the background layer fades in. */
 .heaven-gates:hover::before {
   opacity: 1;
 }
-
-
-/* --- Z-Index Order (Updated) ---
-   0: Bliss BG Pseudo-element (bottom)
-   1: Bill Face
-   2: Gates
-   3: Clouds
-   4: Login Form (top)
-*/
 
 .gate {
   position: absolute;
@@ -325,42 +310,59 @@ form button:hover {
   height: 100%;
   background: linear-gradient(to top, #f7d154, #fce9a0);
   border: 5px solid #a67c00;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 0, 0, 0.3);
   z-index: 2;
   transition: transform 2.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .gate::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: repeating-linear-gradient(to right,
-      rgba(166, 124, 0, 0.7) 0px,
-      rgba(166, 124, 0, 0.7) 20px,
-      transparent 20px,
-      transparent 40px);
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(166, 124, 0, 0.7) 0px,
+    rgba(166, 124, 0, 0.7) 20px,
+    transparent 20px,
+    transparent 40px
+  );
   z-index: 1;
 }
 
 .gate::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 300px;
-  background: radial-gradient(farthest-side at 50% 0, #fce9a0, #f7d154 80%, transparent 80%);
+  background: radial-gradient(
+    farthest-side at 50% 0,
+    #fce9a0,
+    #f7d154 80%,
+    transparent 80%
+  );
   z-index: 0;
 }
 
-.left-gate { left: 0; transform: translateX(0%); }
-.right-gate { right: 0; transform: translateX(0%); }
+.left-gate {
+  left: 0;
+  transform: translateX(0%);
+}
+.right-gate {
+  right: 0;
+  transform: translateX(0%);
+}
 
-.heaven-gates:hover .left-gate { transform: translateX(-100%); }
-.heaven-gates:hover .right-gate { transform: translateX(100%); }
+.heaven-gates:hover .left-gate {
+  transform: translateX(-100%);
+}
+.heaven-gates:hover .right-gate {
+  transform: translateX(100%);
+}
 
 .cloud {
   position: absolute;
@@ -372,18 +374,91 @@ form button:hover {
 }
 
 /* Left Side Clouds */
-.cloud1 { background-image: url('../images/cloud1.png'); width: 750px; height: 375px; top: 5%; left: -15%; transition: transform 4.5s ease-out; }
-.cloud3 { background-image: url('../images/cloud3.png'); width: 600px; height: 300px; top: 45%; left: -5%; transition: transform 5s ease-out; }
-.cloud5 { background-image: url('../images/cloud1.png'); transform: scaleX(-1); width: 450px; height: 225px; bottom: 15%; left: 20%; transition: transform 4s ease-out; }
-.cloud7 { background-image: url('../images/cloud2.png'); width: 900px; height: 450px; bottom: -15%; left: -20%; transition: transform 5.2s ease-out; }
-.cloud9 { background-image: url('../images/cloud3.png'); width: 375px; height: 188px; top: 25%; left: 15%; transition: transform 3.8s ease-out; }
+.cloud1 {
+  background-image: url("../images/cloud1.png");
+  width: 750px;
+  height: 375px;
+  top: 5%;
+  left: -15%;
+  transition: transform 4.5s ease-out;
+}
+.cloud3 {
+  background-image: url("../images/cloud3.png");
+  width: 600px;
+  height: 300px;
+  top: 45%;
+  left: -5%;
+  transition: transform 5s ease-out;
+}
+.cloud5 {
+  background-image: url("../images/cloud1.png");
+  transform: scaleX(-1);
+  width: 450px;
+  height: 225px;
+  bottom: 15%;
+  left: 20%;
+  transition: transform 4s ease-out;
+}
+.cloud7 {
+  background-image: url("../images/cloud2.png");
+  width: 900px;
+  height: 450px;
+  bottom: -15%;
+  left: -20%;
+  transition: transform 5.2s ease-out;
+}
+.cloud9 {
+  background-image: url("../images/cloud3.png");
+  width: 375px;
+  height: 188px;
+  top: 25%;
+  left: 15%;
+  transition: transform 3.8s ease-out;
+}
 
 /* Right Side Clouds */
-.cloud2 { background-image: url('../images/cloud2.png'); width: 975px; height: 488px; top: 0%; right: -20%; transition: transform 4.8s ease-out; }
-.cloud4 { background-image: url('../images/cloud3.png'); transform: scaleX(-1); width: 675px; height: 338px; top: 55%; right: -5%; transition: transform 5.5s ease-out; }
-.cloud6 { background-image: url('../images/cloud1.png'); width: 525px; height: 263px; bottom: 20%; right: 22%; transition: transform 4.2s ease-out; }
-.cloud8 { background-image: url('../images/cloud2.png'); transform: scaleX(-1); width: 825px; height: 413px; bottom: -20%; right: -15%; transition: transform 5.8s ease-out; }
-.cloud10 { background-image: url('../images/cloud1.png'); width: 300px; height: 150px; top: 35%; right: 20%; transition: transform 3.9s ease-out; }
+.cloud2 {
+  background-image: url("../images/cloud2.png");
+  width: 975px;
+  height: 488px;
+  top: 0%;
+  right: -20%;
+  transition: transform 4.8s ease-out;
+}
+.cloud4 {
+  background-image: url("../images/cloud3.png");
+  transform: scaleX(-1);
+  width: 675px;
+  height: 338px;
+  top: 55%;
+  right: -5%;
+  transition: transform 5.5s ease-out;
+}
+.cloud6 {
+  background-image: url("../images/cloud1.png");
+  width: 525px;
+  height: 263px;
+  bottom: 20%;
+  right: 22%;
+  transition: transform 4.2s ease-out;
+}
+.cloud8 {
+  background-image: url("../images/cloud2.png");
+  transform: scaleX(-1);
+  width: 825px;
+  height: 413px;
+  bottom: -20%;
+  right: -15%;
+  transition: transform 5.8s ease-out;
+}
+.cloud10 {
+  background-image: url("../images/cloud1.png");
+  width: 300px;
+  height: 150px;
+  top: 35%;
+  right: 20%;
+  transition: transform 3.9s ease-out;
+}
 
 /* Symmetrical Movement on Hover */
 .heaven-gates:hover .cloud1,
@@ -401,11 +476,15 @@ form button:hover {
 .heaven-gates:hover .cloud10 {
   transform: translateX(150%) scaleX(var(--scale, 1));
 }
-.cloud5 { --scale: -1; }
-.cloud4, .cloud8 { --scale: -1; }
+.cloud5 {
+  --scale: -1;
+}
+.cloud4,
+.cloud8 {
+  --scale: -1;
+}
 
-
-/* Bill Face Animation */
+/* bill face animation */
 .bill-face {
   position: absolute;
   z-index: 1;
@@ -434,11 +513,10 @@ form button:hover {
   background: rgba(255, 255, 255, 0.95);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 90%;
 }
-
 
 .delete-form {
   display: inline;
@@ -458,9 +536,7 @@ form button:hover {
   background-color: #990000;
 }
 
-/* -------------------------------- */
-/* Offerings Display Block          */
-/* -------------------------------- */
+/* offering block in the profile page */
 .offering-tools {
   margin-top: 0.5rem;
 }
@@ -489,9 +565,7 @@ form button:hover {
   background-color: #990000;
 }
 
-/* -------------------------------- */
-/* Offering Replace Form            */
-/* -------------------------------- */
+/* offering replace form*/
 .replace-form {
   margin-top: 0.5rem;
 }
@@ -514,52 +588,148 @@ form button:hover {
   background-color: #004a99;
 }
 
-/* -------------------------------- */
-/* Responsive Design                */
-/* -------------------------------- */
+/* mobile adaptive */
 
-/* For screens smaller than 768px (like tablets and phones) */
-@media (max-width: 768px) {
-  main {
-    padding: 1rem; /* Reduce padding on smaller screens */
-  }
-
-  nav a {
-    display: block; /* Stack nav links vertically */
-    margin: 10px 0;
-  }
-
-  form {
-    padding: 1rem; /* Reduce form padding */
-  }
-
-  .login-form {
-    margin-top: 150px; /* Adjust login form position */
-  }
-
-  .heaven-gates {
-    height: 600px; /* Reduce height of the gate animation container */
+@media (max-width: 900px) {
+  .home-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    grid-template-areas: "text" "image" !important;
   }
 }
 
-/* -------------------------------- */
-/* Reusable "Mica" Window Style     */
-/* -------------------------------- */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  .win11-bg-container {
+    padding: 1rem;
+    min-height: calc(100vh - 88px);
+  }
+
+  header {
+    padding: 0 1rem;
+  }
+  .header-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  .header-nav {
+    width: 100%;
+    order: 3;
+    justify-content: center;
+    margin-top: 0.75rem;
+    gap: 1rem;
+  }
+
+  .header-left .site-logo-link {
+    margin-left: 0;
+    padding: 0;
+  }
+  .site-logo {
+    height: 64px;
+    width: 64px;
+  }
+  .site-title {
+    font-size: 1.2em;
+  }
+  .header-nav a {
+    font-size: 1em;
+  }
+  .profile-dropdown {
+    top: 110%;
+  }
+
+  /* home */
+  .home-section {
+    padding: 2rem 1rem;
+  }
+  .hero-section {
+    padding: 3rem 1rem;
+  }
+  .hero-content {
+    padding: 1rem;
+  }
+  .hero-section h1 {
+    font-size: 2em;
+  }
+  .hero-section p {
+    font-size: 1em;
+  }
+  .grid-text h2 {
+    font-size: 1.8em;
+  }
+
+  /*login */
+  .heaven-gates {
+    height: 100vh;
+  }
+  .mica-window {
+    padding: 1.5rem;
+  }
+  .mica-window h2 {
+    font-size: 1.5em;
+  }
+
+  .heaven-gates .mica-window {
+    margin-top: 0;
+    transform: scale(0.85);
+  }
+  .heaven-gates:hover .mica-window {
+    transition: transform 1s 1s;
+    transform: scale(1);
+  }
+  .bill-face img {
+    width: 100px;
+  }
+
+  /* profile */
+  .offering-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .offering-actions {
+    justify-content: flex-end;
+  }
+  .prayer-item {
+    padding: 1rem;
+  }
+
+  /* scripture */
+  .scripture-terminal {
+    padding: 1rem;
+  }
+  #scripture-content {
+    font-size: 0.9em;
+  }
+
+  /* activate windows */
+  #windows-watermark {
+    font-size: 10px;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+/* windows mica style (windows 11 semi transparent glass looking thingy ¯\_( ͡° ͜ʖ ͡°)_/¯)*/
 .win11-bg-container {
-  min-height: calc(100vh - 102px); /* Full height minus the header */
+  min-height: calc(100vh - 102px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background-image: url('../images/win11-bg.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .mica-window {
-  background: rgba(242, 242, 242, 0.8); /* A light grey, slightly transparent */
+  background: rgba(242, 242, 242, 0.8);
   backdrop-filter: blur(25px) saturate(150%);
-  -webkit-backdrop-filter: blur(25px) saturate(150%); /* For Safari */
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -626,7 +796,7 @@ form button:hover {
 .mica-window .recommended-settings input[type="checkbox"] {
   width: auto;
   margin-top: 4px;
-  accent-color: #0078d4; /* Style the checkmark color */
+  accent-color: #0078d4;
 }
 
 .mica-window .recommended-settings label {
@@ -653,9 +823,7 @@ form button:hover {
   transform: scale(0.98);
 }
 
-/* ------------------------------------ */
-/* Profile Page - Modern Prayer List    */
-/* ------------------------------------ */
+/* profile prayer list    */
 
 #prayers-list {
   list-style-type: none;
@@ -663,21 +831,20 @@ form button:hover {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Creates space between prayer windows */
+  gap: 1.5rem;
 }
 
-/* Each prayer item now uses the .mica-window style we already created! */
 .prayer-item {
-  padding: 1.5rem; /* A little less padding than the main forms */
+  padding: 1.5rem;
 }
 
 .prayer-item h3 {
   margin-top: 0;
-  color: #005a9e; /* A nice blue for the prayer reason */
+  color: #005a9e;
 }
 
 .prayer-item .prayer-message {
-  white-space: pre-wrap; /* Preserves line breaks in the message */
+  white-space: pre-wrap;
   margin: 1rem 0;
 }
 
@@ -690,7 +857,6 @@ form button:hover {
   margin-top: 1rem;
 }
 
-/* The "Neat Banner" for offerings */
 .offering-bar {
   margin-top: 1.5rem;
   padding: 0.75rem 1rem;
@@ -703,24 +869,23 @@ form button:hover {
 }
 
 .no-offering {
-    color: #777;
-    font-style: italic;
+  color: #777;
+  font-style: italic;
 }
 
 .offering-info {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-family: 'Consolas', 'Courier New', monospace;
+  font-family: "Consolas", "Courier New", monospace;
   font-size: 0.9em;
-  /* The following two lines prevent long filenames from breaking the layout */
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .offering-info .file-icon {
-  font-size: 1.5em; /* Make the emoji icon bigger */
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  font-size: 1.5em;
+  flex-shrink: 0;
 }
 
 .offering-info .file-name {
@@ -732,10 +897,9 @@ form button:hover {
 .offering-actions {
   display: flex;
   gap: 0.5rem;
-  flex-shrink: 0; /* Prevent this container from shrinking */
+  flex-shrink: 0;
 }
 
-/* General styling for our new small action buttons */
 .btn-action {
   display: inline-flex;
   align-items: center;
@@ -758,7 +922,260 @@ form button:hover {
   transform: scale(0.9);
 }
 
-/* Hide the ugly default file input */
 .replace-form input[type="file"] {
-    display: none;
+  display: none;
+}
+
+/* home content*/
+.home-main {
+  padding: 0;
+}
+
+.home-section {
+  padding: 4rem 2rem;
+}
+
+.alternate-bg {
+  background-color: rgba(0, 90, 158, 0.05);
+}
+
+.hero-section {
+  text-align: center;
+  background: #005a9e url("../images/bliss.png") no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 6rem 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+}
+
+.hero-section h1 {
+  font-size: 3em;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section p {
+  font-size: 1.2em;
+  margin-bottom: 2rem;
+}
+
+.hero-button {
+  background-color: white;
+  color: #005a9e;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.hero-button:hover {
+  background-color: #e6e6e6;
+  transform: translateY(-2px);
+}
+
+.home-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text image";
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.home-content-grid.reverse-grid {
+  grid-template-areas: "image text";
+}
+
+.home-content-grid .grid-text {
+  grid-area: text;
+}
+.home-content-grid .grid-image {
+  grid-area: image;
+}
+.home-content-grid.reverse-grid .grid-text {
+  grid-area: text;
+}
+.home-content-grid.reverse-grid .grid-image {
+  grid-area: image;
+}
+
+.grid-text h2 {
+  font-size: 2.2em;
+  color: #005a9e;
+  margin-top: 0;
+}
+
+.news-meta {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.home-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.home-img:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .home-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .home-content-grid.reverse-grid {
+    grid-template-areas:
+      "image"
+      "text";
+  }
+
+  .hero-section h1 {
+    font-size: 2.2em;
+  }
+}
+
+/* about us */
+.about-main {
+  max-width: 900px;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.about-content-panel {
+  margin-bottom: 3rem;
+}
+
+.map-title {
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+/* scripture terminal */
+
+.scripture-main {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+#upload-scripture-section .mica-window {
+  margin: 0 auto;
+}
+
+.scripture-display h2,
+.scripture-display p {
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.scripture-display p {
+  font-size: 1.1em;
+}
+
+.scripture-terminal {
+  background-color: rgba(0, 26, 51, 0.9);
+  border: 1px solid #0078d4;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 120, 212, 0.3), inset 0 0 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+#scripture-content {
+  color: #33ff33;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 1.1em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
+
+.blinking-cursor {
+  color: #33ff33;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 1.1em;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: #33ff33;
+  }
+}
+
+#upload-status {
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+.status-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.status-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* activate windows         */
+#windows-watermark {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  z-index: 9999;
+
+  color: white;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: right;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+
+  pointer-events: none;
+}
+
+/* error panel thingy*/
+#form-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  display: none;
 }

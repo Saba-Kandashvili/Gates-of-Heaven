@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bill Gates of Heaven</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/main.js" defer></script>
-</head>
-<body class="standard-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill Gates of Heaven</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="standard-page">
+    <div id="header-placeholder"></div>
 
-  <div id="header-placeholder"></div>
+    <div class="page-container">
+      <main>
+        <div class="heaven-gates">
+          <!-- ... clouds ... -->
+          <div class="cloud cloud1"></div>
+          <div class="cloud cloud2"></div>
+          <div class="cloud cloud3"></div>
+          <div class="cloud cloud4"></div>
+          <div class="cloud cloud5"></div>
+          <div class="cloud cloud6"></div>
+          <div class="cloud cloud7"></div>
+          <div class="cloud cloud8"></div>
+          <div class="cloud cloud9"></div>
+          <div class="cloud cloud10"></div>
 
-   <div class="page-container">
-  <main>
-  <div class="heaven-gates">
-    <!-- Total of 10 clouds for a full, grand scene -->
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
-    <div class="cloud cloud4"></div>
-    <div class="cloud cloud5"></div>
-    <div class="cloud cloud6"></div>
-    <div class="cloud cloud7"></div>
-    <div class="cloud cloud8"></div>
-    <div class="cloud cloud9"></div>
-    <div class="cloud cloud10"></div>
+          <div class="gate left-gate"></div>
+          <div class="gate right-gate"></div>
+          <div class="bill-face">
+            <img src="images/bill-gates.png" alt="Bill Gates" />
+          </div>
 
-    <div class="gate left-gate"></div>
-    <div class="gate right-gate"></div>
-    <div class="bill-face">
-      <img src="images/bill-gates.png" alt="Bill Gates" />
+          <div class="win11-bg-container">
+            <div class="mica-window">
+              <form action="backend/login.php" method="POST" class="login-form">
+                <h2>Enter the Gates of Heaven</h2>
+                <label>
+                  Username:
+                  <input type="text" name="username" required />
+                </label>
+                <label>
+                  Password:
+                  <input type="password" name="password" required />
+                </label>
+                <div id="form-error"></div>
+                <button type="submit">Log In</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
-    <div class="win11-bg-container">
-    <div class="mica-window">
-    <form action="backend/login.php" method="POST" class="login-form">
-  <h2>Enter the Gates of Heaven</h2>
-  <label>
-    Username:
-    <input type="text" name="username" required />
-  </label>
-  <label>
-    Password:
-    <input type="password" name="password" required />
-  </label>
-  <button type="submit">Log In</button>
-</form>
-</div>
-</div>
-  </div>
-</main>
-</div>
-
-  <div id="footer-placeholder"></div>
-
-</body>
-
+    <div id="footer-placeholder"></div>
+  </body>
 </html>

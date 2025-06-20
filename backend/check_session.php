@@ -1,18 +1,18 @@
 <?php
 session_start();
-require_once 'db.php'; // Use require_once to be safe
+require_once 'db.php';
 
 header('Content-Type: application/json');
 
-// Check if a user ID exists in the session
+// user id must exist in the session
 if (isset($_SESSION['user_id'])) {
-    // A session variable exists, but is the user still valid in the DB?
+    // if session is cached but user was deleted int he db
     $stmt = $db->prepare("SELECT id, username FROM users WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
 
     if ($user) {
-        // Yes, the user is valid.
+        // double check the validity of the user
         echo json_encode([
             'loggedIn' => true,
             'username' => $user['username']
@@ -21,8 +21,7 @@ if (isset($_SESSION['user_id'])) {
     }
 }
 
-// If we reach here, the session is invalid or the user doesn't exist.
-// Destroy the invalid session to clean up.
+// code should only get here if osmethings invalid so destroy the seeion
 session_unset();
 session_destroy();
 

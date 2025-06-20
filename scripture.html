@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bill Gates of Heaven - Scriptures</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="js/main.js" defer></script>
-</head>
-<body class="standard-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill Gates of Heaven - Scriptures</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="standard-page">
+    <div id="header-placeholder"></div>
 
+    <div class="win11-bg-container">
+      <main class="scripture-main">
+        <section id="upload-scripture-section" style="display: none">
+          <div class="mica-window">
+            <h2>Update The Word™</h2>
+            <p>
+              As a chosen administrator, you may upload a new version of the
+              sacred texts. The file must be a `.txt` document.
+            </p>
+            <form
+              action="backend/upload_scripture.php"
+              method="POST"
+              enctype="multipart/form-data"
+            >
+              <label>
+                Select New Scripture File:
+                <input
+                  type="file"
+                  name="scripture_file"
+                  accept=".txt"
+                  required
+                />
+              </label>
+              <button type="submit">Broadcast to the Cloud™</button>
+            </form>
+            <div id="upload-status"></div>
+          </div>
+        </section>
 
-  <div id="header-placeholder"></div>
+        <section class="scripture-display">
+          <h2>The Sacred Scriptures</h2>
+          <p>
+            Words of wisdom from The Divine One, delivered via secure channel.
+          </p>
+          <div class="scripture-terminal">
+            <pre id="scripture-content">C:\> Loading scriptures.txt...</pre>
+            <span class="blinking-cursor">_</span>
+          </div>
+        </section>
+      </main>
+    </div>
 
-  <main>
-    <h2>The Sacred Scriptures</h2>
-    <p>Words of wisdom from The Divine One.</p>
-    <pre id="scripture-content">Loading scriptures...</pre>
-  </main>
-
-  <div id="footer-placeholder"></div>
-
-</body>
+    <div id="footer-placeholder"></div>
+  </body>
 </html>

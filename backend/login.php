@@ -10,14 +10,16 @@ $stmt->execute([$username]);
 $user = $stmt->fetch();
 
 if ($user && password_verify($password, $user['password'])) {
-    // Success: create session & cookie
+    // create a session and a cookie
     $_SESSION['username'] = $username;
     $_SESSION['user_id'] = $user['id'];
     setcookie('last_login', date('Y-m-d H:i:s'), time() + 3600, '/');
-    
+
     header("Location: ../profile.html");
     exit;
 } else {
-    echo "Invalid username or password.";
+    $_SESSION['error_message'] = "Invalid username or password.";
+    header("Location: ../login.html");
+    exit;
 }
 ?>
